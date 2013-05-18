@@ -53,8 +53,9 @@ app.configure(function() {
   app.set('port', process.env.PORT || config.app.port || 6789);
   app.set('view engine', 'jade'); 
   app.set('views', __dirname + '/views/themes/' + config.theme.name);
-  app.use(express.static(__dirname + '/public'));
   app.use(express.bodyParser());
+  app.use(express.static(__dirname + '/public'));
+  //app.use(require('connect').bodyParser());
   app.use(express.cookieParser(config.session.secret));
   app.use(express.session({
     key: "balloons",
@@ -65,6 +66,8 @@ app.configure(function() {
   app.use(app.router);
 });
 
+
+app.use(express.bodyParser());
 
 // Bootstrap models
 var models_path = __dirname + '/models'

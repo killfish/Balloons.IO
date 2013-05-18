@@ -5,6 +5,7 @@ var KataSchema = new Schema({
   id: String,
   language: String,
   level: String,
+  challengeTitle: String,
   challengeCopy: String,
   templateCode: String,
   testCases: [
