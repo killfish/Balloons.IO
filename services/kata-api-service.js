@@ -7,16 +7,16 @@
 var mongoose = require('mongoose')
     , Kata = mongoose.model('KataSchema')
 
-//exports.get = function(id){
-//  return Kata.get(id)
-//}
-//
-//exports.list = function(){
-//  return Kata.list()
-//}
+exports.getById = function(id, fun){
+  return Kata.findOne({"id": id}, fun);
+};
+
+exports.getAllKatas = function(fun){
+  Kata.find({}, fun)
+};
 
 exports.save = function(kata){
-  var kataObj = new Kata(kata)
-  console.log(kataObj)
-  kataObj.save()
-}
+  var kataObj = new Kata(kata);
+  console.log(kataObj);
+  kataObj.save();
+};
