@@ -10,7 +10,13 @@ var app = module.parent.exports.app
 
 app.get('/rooms', utils.restrict, function(req, res) {
     utils.getPublicRoomsInfo(client, function(rooms) {
-        res.render('room_list', { rooms: rooms });
+
+
+      // test get all user code.
+      utils.getAllUsers(client, function(users){
+        res.render('room_list', { rooms: rooms, users : users });
+      })
+
     });
 });
 

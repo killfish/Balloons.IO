@@ -386,4 +386,53 @@ $(function() {
   function focusInput() {
     $(".chat-input input.text").focus();
   }
+
+
+  if ($('body').hasClass('room')){
+
+    var $chatInput = $('.chat-input')
+      , $problem = $('.problem')
+      , $header = $('header');
+
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+
+
+    // problem sockets
+    socket.on('problem response', function(res){
+      console.log('####res', res);
+    });
+
+
+    setTimeout(function(){
+        console.log('sending request');
+        socket.emit('problem request');
+    }, 1000);
+
+
+
+
+
+    function resizedw(){
+      $('.answer').height($(window).height() - $header.outerHeight() - $chatInput.outerHeight() - $chatInput.outerHeight() + 15);
+    }
+
+    resizedw();
+
+    var doit;
+    $(window).resize(function(){
+      clearTimeout(doit);
+      doit = setTimeout(resizedw, 100);
+    });
+
+
+    $('.chat-input').on('click','.button', function(){
+      console.log(editor.getValue());
+    })
+
+  };
+
+
+
 });

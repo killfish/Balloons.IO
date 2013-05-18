@@ -13,6 +13,7 @@ var parent = module.parent.exports
   , parseCookies = require('connect').utils.parseSignedCookies
   , cookie = require('cookie')
   , config = require('./config.json')
+  , kataService = require('./services/kata-api-service.js')
   , fs = require('fs');
 
 
@@ -107,6 +108,29 @@ io.sockets.on('connection', function (socket) {
         provider: provider,
         status: status
       });
+    });
+  });
+
+
+
+  socket.on('problem request', function() {
+    var problem_response = { title: "Problem 1", question: "Reverse a string!!" };
+
+
+    console.log('##### problem requested');
+
+    socket.emit('problem response', {
+      response: problem_response
+    });
+  });
+
+
+
+  socket.on('submit request', function(data) {
+    var submit_response = kataService.evaluateCode(data);
+
+    socket.emit('submit response', {
+      response: submit_response
     });
   });
 

@@ -10,6 +10,7 @@ var express = require('express')
   , redis = require('redis')
   , fs = require('fs')
   , mongoose = require('mongoose')
+  , _ = require('underscore')
   , RedisStore = require('connect-redis')(express);
 
 /*
@@ -50,6 +51,8 @@ require('./strategy');
 var app = exports.app = express();
 
 app.configure(function() {
+
+
   app.set('port', process.env.PORT || config.app.port || 6789);
   app.set('view engine', 'jade'); 
   app.set('views', __dirname + '/views/themes/' + config.theme.name);
@@ -63,6 +66,11 @@ app.configure(function() {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+  });
   app.use(app.router);
 });
 

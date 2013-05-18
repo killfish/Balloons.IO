@@ -57,11 +57,15 @@ block content
 				// .chat-input
 
 		.content.code
-			.chat
+			.question
 				.problem
 					| Problem 1
 					| Reverse a string!!
-				textarea(rows='100%', cols='100%')
+				.answer
+					div(id='editor')
+						var test = function(){
+							return sovevalue;
+							}
 
 			.chat-input
 				.button(margin='13px') Submit
@@ -78,5 +82,8 @@ block content
 	script(defer, src="/js/plugins.js")
 	script(defer, src="/js/libs/ICanHaz.min.js")
 	script(src="/socket.io/socket.io.js")
+	script(src="/js/libs/ace-min/ace.js")
+	script(defer, src="/js/script.js")
 
-	script(defer, src="/js/script.js")              
+
+

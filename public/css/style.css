@@ -36,6 +36,21 @@ textarea {
   font-family: sans-serif;
   color: #222;
 }
+
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.answer {
+    position: relative;
+    width:100%;
+    height:400px;
+}
+
 body {
   margin: 0;
   font-size: 1em;
@@ -523,7 +538,7 @@ header .button-circle.lock.active span i {
   background-image: -moz-linear-gradient(#555 5.8%, #242424);
   background-image: -o-linear-gradient(#555 5.8%, #242424);
   float: left;
-  width: 180px;
+  width: auto;
 }
 sidebar {
   width: 200px;
