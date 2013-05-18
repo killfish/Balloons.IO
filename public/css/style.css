@@ -894,6 +894,10 @@ p span.date {
   background: none;
   padding: 10px;
 }
+.fancy-theme .code .problem{
+  background-color: #f4e489;
+  padding: 10px;
+}
 .fancy-theme .code-content {
   top: 50px;
   width: 75%;
@@ -911,6 +915,7 @@ p span.date {
   left: 12px;
   bottom: 78px;
   right: 12px;
+  overflow-x: hidden;
 }
 .fancy-theme .chat,
 .fancy-theme .line-chat {
