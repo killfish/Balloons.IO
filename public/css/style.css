@@ -541,7 +541,7 @@ header .button-circle.lock.active span i {
   width: auto;
 }
 sidebar {
-  width: 200px;
+  width: 17%;
   height: auto;
   max-height: 100%;
   position: absolute;
@@ -675,7 +675,7 @@ p span.date {
   bottom: 0;
   right: 0;
   top: 4.4em;
-  left: 201px;
+
 }
 .content .chat {
   z-index: 100;
@@ -767,7 +767,7 @@ p span.date {
   bottom: 0;
   position: absolute;
   right: 0;
-  left: 0;
+  left: 1px;
   border-top: 1px solid #ccc;
   background-image: -webkit-gradient(linear, 0 0, 0 45, color-stop(0.044, #fdfdfd), to(#dfe2e9));
   background-image: -webkit-linear-gradient(#eee 4.4%, #ccc);
@@ -780,10 +780,10 @@ p span.date {
   background: #fff url("../img/icon-chat.png") 14px center no-repeat;
   text-indent: 26px;
   border-radius: 4px;
-  width: 96%;
+  width: 89%;
   padding: 14px 1%;
   display: block;
-  margin: 10px 1%;
+  margin: 10px 5%;
 }
 .modal-invite {
   width: 500px;
@@ -902,7 +902,7 @@ p span.date {
   width: 25%;
 }
 .fancy-theme .code {
-  left: 41%;
+  left: 17%;
   width: 59%;
 }
 .fancy-theme .code textarea{
@@ -923,7 +923,7 @@ p span.date {
   display: none;
 }
 .fancy-theme .wrap {
-  background: url("../img/wood.jpg");
+  /*background: url("../img/wood.jpg");*/
 }
 .fancy-theme .chat {
   background: #fff;
@@ -952,9 +952,9 @@ p span.date {
   right: 16px;
 }
 .fancy-theme .chat-input {
-  background: url("../img/bg-purple.png");
+
+ /* background: url("../img/bg-sidebar.png");*/
   border-top: 1px solid #000;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 0 4px 2px rgba(0,0,0,0.35) inset;
 }
 .fancy-theme .chat-input .button{
   margin: 13px;

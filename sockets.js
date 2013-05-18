@@ -102,6 +102,8 @@ io.sockets.on('connection', function (socket) {
   socket.on('set status', function(data) {
     var status = data.status;
 
+    console.log('##### status');
+
     client.set('users:' + userKey + ':status', status, function(err, statusSet) {
       io.sockets.emit('user-info update', {
         username: nickname,
