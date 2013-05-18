@@ -110,14 +110,14 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-  socket.on('history request', function() {
-      var problem = "";
-      
-      socket.emit('problem response', {
-        problem: problem
-      });
+  socket.on('problem request', function() {
+    var problem_html;
+
+    socket.emit('problem response', {
+      problem: problem_html
     });
   });
+
 
   socket.on('history request', function() {
     var history = [];
