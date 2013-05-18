@@ -1,6 +1,6 @@
 {
-    "name": "Balloons.io"
-  , "description": "Web multi-room chat server and client ready to use."
+    "name": "CodeKata.io"
+  , "description": "Compete against developers online and build a solid reputation."
   , "version": "0.0.1"
   , "dependencies": {
         "express": "3.0.0"
