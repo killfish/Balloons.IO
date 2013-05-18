@@ -403,8 +403,20 @@ $(function() {
       , $header = $('header');
 
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
+    editor.setTheme("ace/theme/clouds");
     editor.getSession().setMode("ace/mode/javascript");
+
+    // problem sockets
+    socket.on('problem response', function(res){
+      console.log('####res', res);
+    });
+
+    setTimeout(function(){
+        console.log('sending request');
+        socket.emit('problem request');
+    }, 1000);
+
+
 
     function resizedw(){
       $('.answer').height($(window).height() - $header.outerHeight() - $chatInput.outerHeight() - $chatInput.outerHeight() + 15);
