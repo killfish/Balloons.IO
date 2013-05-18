@@ -2,16 +2,20 @@ var mongoose = require('mongoose')
   , Schema = mongoose.Schema;
 
 var KataSchema = new Schema({
-    title:  String,
-    author: String,
-    body:   String,
-    comments: [{ body: String, date: Date }],
-    date: { type: Date, default: Date.now },
-    hidden: Boolean,
-    meta: {
-        votes: Number,
-        favs:  Number
-    }
+  id: String,
+  language: String,
+  level: String,
+  challengeCopy: String,
+  templateCode: String,
+  testCases: [
+    {test: String, expectedResult: String}
+  ],
+  comments: [
+    { body: String, date: Date }
+  ],
+  meta: {
+    favs: Number
+  }
 });
 
 mongoose.model('KataSchema', KataSchema)

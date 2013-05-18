@@ -110,6 +110,22 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
+  socket.on('problem request', function() {
+    var problem_response = "Problem 1 Reverse a string!!";
+
+    socket.emit('problem response', {
+      response: problem_response
+    });
+  });
+
+  socket.on('submit request', function(data) {
+    var submit_response = kataService.evaluateCode(data);
+
+    socket.emit('submit response', {
+      response: submit_response
+    });
+  });
+
   socket.on('history request', function() {
     var history = [];
     var tail = require('child_process').spawn('tail', ['-n', 5, chatlogFileName]);

@@ -10,6 +10,7 @@ var express = require('express')
   , redis = require('redis')
   , fs = require('fs')
   , mongoose = require('mongoose')
+  , _ = require('underscore')
   , RedisStore = require('connect-redis')(express);
 
 /*
@@ -71,8 +72,6 @@ app.configure(function() {
   });
   app.use(app.router);
 });
-
-
 
 
 // Bootstrap models
