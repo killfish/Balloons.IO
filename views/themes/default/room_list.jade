@@ -18,6 +18,9 @@ block content
 				.inactive
 					input(type='checkbox', id="hide-inactive", checked) 
 					label(for="hide-inactive") Hide inactive
+				.test-user
+					each user,index in users
+						em #{user.username}
 			.create-room-block
 				h4
 					em or
@@ -26,6 +29,7 @@ block content
 					p
 						input.text-grey(type='text', name='room_name', value='', placeholder='Name of your room')
 					input.button(type='submit', value='Create now')
+
 
 
 

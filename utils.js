@@ -4,30 +4,30 @@ var crypto = require('crypto');
  * Restrict paths
  */
 
-exports.restrict = function(req, res, next){
-  if(req.isAuthenticated()) next();
+exports.restrict = function (req, res, next) {
+  if (req.isAuthenticated()) next();
   else res.redirect('/');
 };
 
 /*
  * Generates a URI Like key for a room
- */       
+ */
 
-exports.genRoomKey = function() {
+exports.genRoomKey = function () {
   var shasum = crypto.createHash('sha1');
   shasum.update(Date.now().toString());
-  return shasum.digest('hex').substr(0,6);
+  return shasum.digest('hex').substr(0, 6);
 };
 
 /*
  * Room name is valid
  */
 
-exports.validRoomName = function(req, res, fn) {
+exports.validRoomName = function (req, res, fn) {
   req.body.room_name = req.body.room_name.trim();
   var nameLen = req.body.room_name.length;
 
-  if(nameLen < 255 && nameLen >0) {
+  if (nameLen < 255 && nameLen > 0) {
     fn();
   } else {
     res.redirect('back');
@@ -37,10 +37,10 @@ exports.validRoomName = function(req, res, fn) {
 /*
  * Checks if room exists
  */
-exports.roomExists = function(req, res, client, fn) {
-  client.hget('balloons:rooms:keys', encodeURIComponent(req.body.room_name), function(err, roomKey) {
-    if(!err && roomKey) {
-      res.redirect( '/' + roomKey );
+exports.roomExists = function (req, res, client, fn) {
+  client.hget('balloons:rooms:keys', encodeURIComponent(req.body.room_name), function (err, roomKey) {
+    if (!err && roomKey) {
+      res.redirect('/' + roomKey);
     } else {
       fn()
     }
@@ -49,19 +49,19 @@ exports.roomExists = function(req, res, client, fn) {
 
 /*
  * Creates a room
- */       
-exports.createRoom = function(req, res, client) {
+ */
+exports.createRoom = function (req, res, client) {
   var roomKey = exports.genRoomKey()
     , room = {
-        key: roomKey,
-        name: req.body.room_name,
-        admin: req.user.provider + ":" + req.user.username,
-        locked: 0,
-        online: 0
-      };
+      key: roomKey,
+      name: req.body.room_name,
+      admin: req.user.provider + ":" + req.user.username,
+      locked: 0,
+      online: 0
+    };
 
-  client.hmset('rooms:' + roomKey + ':info', room, function(err, ok) {
-    if(!err && ok) {
+  client.hmset('rooms:' + roomKey + ':info', room, function (err, ok) {
+    if (!err && ok) {
       client.hset('balloons:rooms:keys', encodeURIComponent(req.body.room_name), roomKey);
       client.sadd('balloons:public:rooms', roomKey);
       res.redirect('/' + roomKey);
@@ -75,25 +75,25 @@ exports.createRoom = function(req, res, client) {
  * Get Room Info
  */
 
-exports.getRoomInfo = function(req, res, client, fn) { 
-  client.hgetall('rooms:' + req.params.id + ':info', function(err, room) {
-    if(!err && room && Object.keys(room).length) fn(room);
+exports.getRoomInfo = function (req, res, client, fn) {
+  client.hgetall('rooms:' + req.params.id + ':info', function (err, room) {
+    if (!err && room && Object.keys(room).length) fn(room);
     else res.redirect('back');
   });
 };
 
-exports.getPublicRoomsInfo = function(client, fn) {
-  client.smembers('balloons:public:rooms', function(err, publicRooms) {
+exports.getPublicRoomsInfo = function (client, fn) {
+  client.smembers('balloons:public:rooms', function (err, publicRooms) {
     var rooms = []
       , len = publicRooms.length;
-    if(!len) fn([]);
+    if (!len) fn([]);
 
     publicRooms.sort(exports.caseInsensitiveSort);
 
-    publicRooms.forEach(function(roomKey, index) {
-      client.hgetall('rooms:' + roomKey + ':info', function(err, room) {
+    publicRooms.forEach(function (roomKey, index) {
+      client.hgetall('rooms:' + roomKey + ':info', function (err, room) {
         // prevent for a room info deleted before this check
-        if(!err && room && Object.keys(room).length) {
+        if (!err && room && Object.keys(room).length) {
           // add room info
           rooms.push({
             key: room.key || room.name, // temp
@@ -102,7 +102,7 @@ exports.getPublicRoomsInfo = function(client, fn) {
           });
 
           // check if last room
-          if(rooms.length == len) fn(rooms);
+          if (rooms.length == len) fn(rooms);
         } else {
           // reduce check length
           len -= 1;
@@ -115,20 +115,20 @@ exports.getPublicRoomsInfo = function(client, fn) {
  * Get connected users at room
  */
 
-exports.getUsersInRoom = function(req, res, client, room, fn) {
-  client.smembers('rooms:' + req.params.id + ':online', function(err, online_users) {
+exports.getUsersInRoom = function (req, res, client, room, fn) {
+  client.smembers('rooms:' + req.params.id + ':online', function (err, online_users) {
     var users = [];
 
-    online_users.forEach(function(userKey, index) {
-      client.get('users:' + userKey + ':status', function(err, status) {
+    online_users.forEach(function (userKey, index) {
+      client.get('users:' + userKey + ':status', function (err, status) {
         var msnData = userKey.split(':')
           , username = msnData.length > 1 ? msnData[1] : msnData[0]
           , provider = msnData.length > 1 ? msnData[0] : "twitter";
 
         users.push({
-            username: username,
-            provider: provider,
-            status: status || 'available'
+          username: username,
+          provider: provider,
+          status: status || 'available'
         });
       });
     });
@@ -138,12 +138,30 @@ exports.getUsersInRoom = function(req, res, client, room, fn) {
   });
 };
 
+exports.getAllUsers = function (client, fn) {
+  console.log('##### USERS')
+  console.log(client.get('users'));
+
+  fn([
+    {
+      username: "test"
+    },
+    {
+      username: "test13333"
+    },
+    {
+      username: "test3"
+    }
+
+  ]);
+}
+
 /*
  * Get public rooms
  */
 
-exports.getPublicRooms = function(client, fn){
-  client.smembers("balloons:public:rooms", function(err, rooms) {
+exports.getPublicRooms = function (client, fn) {
+  client.smembers("balloons:public:rooms", function (err, rooms) {
     if (!err && rooms) fn(rooms);
     else fn([]);
   });
@@ -152,8 +170,8 @@ exports.getPublicRooms = function(client, fn){
  * Get User status
  */
 
-exports.getUserStatus = function(user, client, fn){
-  client.get('users:' + user.provider + ":" + user.username + ':status', function(err, status) {
+exports.getUserStatus = function (user, client, fn) {
+  client.get('users:' + user.provider + ":" + user.username + ':status', function (err, status) {
     if (!err && status) fn(status);
     else fn('available');
   });
@@ -163,7 +181,7 @@ exports.getUserStatus = function(user, client, fn){
  * Enter to a room
  */
 
-exports.enterRoom = function(req, res, room, users, rooms, status){
+exports.enterRoom = function (req, res, room, users, rooms, status) {
   res.locals({
     room: room,
     rooms: rooms,
@@ -181,14 +199,14 @@ exports.enterRoom = function(req, res, room, users, rooms, status){
  * Sort Case Insensitive
  */
 
-exports.caseInsensitiveSort = function (a, b) { 
-   var ret = 0;
+exports.caseInsensitiveSort = function (a, b) {
+  var ret = 0;
 
-   a = a.toLowerCase();
-   b = b.toLowerCase();
+  a = a.toLowerCase();
+  b = b.toLowerCase();
 
-   if(a > b) ret = 1;
-   if(a < b) ret = -1; 
+  if (a > b) ret = 1;
+  if (a < b) ret = -1;
 
-   return ret;
+  return ret;
 };
