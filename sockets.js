@@ -111,20 +111,13 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-
-
   socket.on('problem request', function() {
-    var problem_response = { title: "Problem 1", question: "Reverse a string!!" };
-
-
-    console.log('##### problem requested');
+    var problem_response = { title: "Problem 1", description: "Reverse a string!!" };
 
     socket.emit('problem response', {
       response: problem_response
     });
   });
-
-
 
   socket.on('submit request', function(data) {
     var submit_response = kataService.evaluateCode(data);
