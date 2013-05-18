@@ -9,3 +9,6 @@ var mongoose = require('mongoose')
 exports.get = function(id){
     console.log("Hit" + id)
 }
+
+exports.save = function(id){}
+

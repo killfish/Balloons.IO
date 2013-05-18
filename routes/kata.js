@@ -4,3 +4,9 @@ var app = module.parent.exports.app
     , config = require('../config')
     , kataService = require('../services/kata-api-service.js')
     , utils = require('../utils');
+
+app.post('/kata/new/:id', utils.restrict, function(req, res) {
+  var body = request.body;
+
+
+});
