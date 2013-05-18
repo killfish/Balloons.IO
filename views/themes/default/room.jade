@@ -57,14 +57,15 @@ block content
 				// .chat-input
 
 		.content.code
-			.chat
+			.question
 				.problem
 					| Problem 1
 					| Reverse a string!!
-				div(id='editor')
-					var test = function(){
-						return sovevalue;
-						}
+				.answer
+					div(id='editor')
+						var test = function(){
+							return sovevalue;
+							}
 
 			.chat-input
 				.button(margin='13px') Submit
@@ -81,13 +82,8 @@ block content
 	script(defer, src="/js/plugins.js")
 	script(defer, src="/js/libs/ICanHaz.min.js")
 	script(src="/socket.io/socket.io.js")
-
+	script(src="/js/libs/ace-min/ace.js")
 	script(defer, src="/js/script.js")
 
-	script(src="/js/libs/ace-min/ace.js")
-	script
-		var editor = ace.edit("editor");
-		editor.setTheme("ace/theme/monokai");
-		editor.getSession().setMode("ace/mode/javascript");
-		console.log(editor.getValue());
+
 
