@@ -10,6 +10,7 @@ var express = require('express')
   , redis = require('redis')
   , fs = require('fs')
   , mongoose = require('mongoose')
+  , _ = require('underscore')
   , RedisStore = require('connect-redis')(express);
 
 /*

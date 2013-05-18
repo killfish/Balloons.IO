@@ -111,6 +111,15 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('history request', function() {
+      var problem = "";
+      
+      socket.emit('problem response', {
+        problem: problem
+      });
+    });
+  });
+
+  socket.on('history request', function() {
     var history = [];
     var tail = require('child_process').spawn('tail', ['-n', 5, chatlogFileName]);
     tail.stdout.on('data', function (data) {
