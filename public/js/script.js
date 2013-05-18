@@ -395,7 +395,7 @@ $(function() {
       , $header = $('header');
 
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
+    editor.setTheme("ace/theme/clouds");
     editor.getSession().setMode("ace/mode/javascript");
 
 
@@ -403,7 +403,6 @@ $(function() {
     socket.on('problem response', function(res){
       console.log('####res', res);
     });
-
 
     setTimeout(function(){
         console.log('sending request');
