@@ -884,6 +884,15 @@ p span.date {
 }
 .fancy-theme .content {
   top: 50px;
+  width: 25%;
+}
+.fancy-theme .code {
+  left: 41%;
+  width: 59%;
+}
+.fancy-theme .code-content {
+  top: 50px;
+  width: 75%;
 }
 .fancy-theme .color-line {
   background: #000;
