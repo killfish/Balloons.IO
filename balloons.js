@@ -62,7 +62,9 @@ app.configure(function() {
  * Routes
  */
 
-require('./routes');
+require('./routes/index.js');
+
+require('./routes/rooms.js');
 
 /*
  * Web server
