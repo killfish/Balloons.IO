@@ -13,6 +13,7 @@ var parent = module.parent.exports
   , parseCookies = require('connect').utils.parseSignedCookies
   , cookie = require('cookie')
   , config = require('./config.json')
+  , kataService = require('./services/kata-api-service.js')
   , fs = require('fs');
 
 
@@ -113,7 +114,7 @@ io.sockets.on('connection', function (socket) {
 
 
   socket.on('problem request', function() {
-    var problem_response = "Problem 1 Reverse a string!!";
+    var problem_response = { title: "Problem 1", question: "Reverse a string!!" };
 
 
     console.log('##### problem requested');
