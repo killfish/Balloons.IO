@@ -123,7 +123,7 @@ io.sockets.on('connection', function (socket) {
     var submit_response = kataService.evaluateCode(data);
 
     socket.emit('submit response', {
-      response: submit_response
+      response: true
     });
   });
 

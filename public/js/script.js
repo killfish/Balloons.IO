@@ -58,6 +58,15 @@ $(function() {
     $('.code .question .problem').html("<div class='title'>" + res.response.title + "</div><div class='description'>" + res.response.description + "</div>");
   });
 
+  // submit sockets
+  $('.chat-input').on('click','.button', function(){
+    socket.emit('submit request', { data: editor.getValue() });
+  })
+
+  socket.on('submit response', function(res){
+    
+  });
+
   socket.on('history response', function(data) {
     if(data.history && data.history.length) {
       var $lastInput
@@ -417,12 +426,6 @@ $(function() {
       clearTimeout(doit);
       doit = setTimeout(resizedw, 100);
     });
-
-
-    $('.chat-input').on('click','.button', function(){
-      console.log(editor.getValue());
-    })
-
   };
 
 
