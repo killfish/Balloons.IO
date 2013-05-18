@@ -62,8 +62,8 @@ app.configure(function() {
  * Routes
  */
 
-require('./routes/index.js');
-
+require('./routes/auth.js');
+require('./routes/kata.js');
 require('./routes/rooms.js');
 
 /*
