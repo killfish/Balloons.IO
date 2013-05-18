@@ -19,7 +19,3 @@ var KataSchema = new Schema({
 });
 
 mongoose.model('KataSchema', KataSchema)
-
-//function reverseString(stringToReverse) {
-//  return stringToReverse.split("").reverse().join("")
-//}
