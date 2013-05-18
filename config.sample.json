@@ -6,8 +6,8 @@
       "callback" : "http://127.0.0.1:6789/auth/twitter/callback"
     },
     "facebook": {
-      "clientid" : "yourClientID",
-      "clientsecret" : "yourClientSecret",
+      "clientid" : "572742529414533",
+      "clientsecret" : "2480ef6767576e53a9e7632effe8d256",
       "callback" : "http://127.0.0.1:6789/auth/facebook/callback"
     }
   },
