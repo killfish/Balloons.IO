@@ -48,6 +48,14 @@ $(function() {
     if($('.chat .chat-box').length == 0) {
       socket.emit('history request');
     }
+    if($('.code .question .problem').children().length == 0) {
+      socket.emit('problem request');
+    }
+  });
+
+  // problem sockets
+  socket.on('problem response', function(res){
+    $('.code .question .problem').html("<div class='title'>" + res.response.title + "</div><div class='description'>" + res.response.description + "</div>");
   });
 
   socket.on('history response', function(data) {
@@ -398,7 +406,6 @@ $(function() {
     editor.setTheme("ace/theme/clouds");
     editor.getSession().setMode("ace/mode/javascript");
 
-
     // problem sockets
     socket.on('problem response', function(res){
       console.log('####res', res);
@@ -408,8 +415,6 @@ $(function() {
         console.log('sending request');
         socket.emit('problem request');
     }, 1000);
-
-
 
 
 
