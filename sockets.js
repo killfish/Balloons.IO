@@ -122,10 +122,10 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('submit request', function(data) {
-    var submit_response = kataService.evaluateCode(data);
-
+    //var submit_response = kataService.evaluateCode(data);
+    var submit_response = { data: true};
     socket.emit('submit response', {
-      response: true
+      response: submit_response
     });
   });
 

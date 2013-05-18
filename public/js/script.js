@@ -64,7 +64,7 @@ $(function() {
   })
 
   socket.on('submit response', function(res){
-    
+    $('.submit-modal .modal-body').html("<div>" + res.response.data + "</div>");
   });
 
   socket.on('history response', function(data) {
