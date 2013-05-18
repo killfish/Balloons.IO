@@ -884,6 +884,15 @@ p span.date {
 }
 .fancy-theme .content {
   top: 50px;
+  width: 25%;
+}
+.fancy-theme .code {
+  left: 41%;
+  width: 59%;
+}
+.fancy-theme .code-content {
+  top: 50px;
+  width: 75%;
 }
 .fancy-theme .color-line {
   background: #000;
@@ -922,6 +931,9 @@ p span.date {
   background: url("../img/bg-purple.png");
   border-top: 1px solid #000;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 0 4px 2px rgba(0,0,0,0.35) inset;
+}
+.fancy-theme .chat-input .button{
+  margin: 13px;
 }
 .fancy-theme .chat-input input.text {
   border-color: #000;
