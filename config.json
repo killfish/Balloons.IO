@@ -1,8 +1,8 @@
 {
   "auth": {
     "twitter": {
-      "consumerkey" : "yourConsumerKey",
-      "consumersecret" : "yourSecretKey",
+      "consumerkey" : "y2d25dduG2EKcMxEm4iPg",
+      "consumersecret" : "uzInpVYECGhAARDSa2pmvepHxCXi33RXIBol7Y",
       "callback" : "http://127.0.0.1:6789/auth/twitter/callback"
     },
     "facebook": {
