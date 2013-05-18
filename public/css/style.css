@@ -890,6 +890,10 @@ p span.date {
   left: 41%;
   width: 59%;
 }
+.fancy-theme .code textarea{
+  background: none;
+  padding: 10px;
+}
 .fancy-theme .code-content {
   top: 50px;
   width: 75%;
