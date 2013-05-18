@@ -1004,6 +1004,7 @@ body.home-page .homepage-container .slideshow .slide .slide-image {
   height: 284px;
   border-radius: 5px;
   margin: 0 0 0 10px;
+  background-size: 480px 284px;
 }
 body.home-page .homepage-container .slideshow #nav {
   bottom: 0;
