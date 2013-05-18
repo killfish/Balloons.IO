@@ -8,7 +8,14 @@ var express = require('express')
   , config = require('./config.json')
   , init = require('./init')
   , redis = require('redis')
+  , fs = require('fs')
+  , mongoose = require('mongoose')
   , RedisStore = require('connect-redis')(express);
+
+/*
+ * Instantiate mongo
+ */
+mongoose.connect('mongodb://localhost/kata');
 
 /*
  * Instantiate redis
@@ -58,6 +65,17 @@ app.configure(function() {
   app.use(app.router);
 });
 
+
+
+
+// Bootstrap models
+var models_path = __dirname + '/models'
+fs.readdirSync(models_path).forEach(function (file) {
+  require(models_path+'/'+file)
+})
+
+
+
 /*
  * Routes
  */
@@ -74,6 +92,7 @@ exports.server = http.createServer(app).listen(app.get('port'), function() {
   console.log('CodeKata.io started on port %d', app.get('port'));
 });
 
+
 /*
  * Socket.io
  */
@@ -88,3 +107,6 @@ require('./sockets');
 process.on('uncaughtException', function(err){
   console.log('Exception: ' + err.stack);
 });
+
+
+
