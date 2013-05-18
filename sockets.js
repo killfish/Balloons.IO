@@ -111,8 +111,8 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('problem request', function() {
-    var problem_html;
-
+    var problem_html = "Problem 1 Reverse a string!!";
+    
     socket.emit('problem response', {
       problem: problem_html
     });
