@@ -211,4 +211,27 @@ exports.caseInsensitiveSort = function (a, b) {
   return ret;
 };
 
+exports.showProfile = function (req, res, room, users, rooms, status, user) {
+  res.locals({
+    room: room,
+    rooms: rooms,
+    user: {
+      nickname: req.user.username,
+      provider: req.user.provider,
+      status: status
+    },
+    users_list: users,
+    usr: user
+  });
+  console.log("Render the user view for user:" + user);
+  res.render('user');
+};
+
+exports.showProfile_ = function (req, res, user) {
+  res.locals({
+    user: user
+  });
+  console.log("Render the user view for user:" + user);
+  res.render("user");
+};
 

@@ -38,10 +38,23 @@ app.get('/user/:id', function(req, res){
   console.log("get")
   console.log(req.params.id);
   userService.getById(req.params.id, function(err, user){
-    if(err) res.send(err)
-    console.log("user is: " + user)
-    res.send(user)
+    console.log("user is: " + user);
+    utils.getRoomInfo(req, res, client, function(room) {
+        console.log("1");
+        utils.getUsersInRoom(req, res, client, room, function(users) {
+            console.log("2");
+            utils.getPublicRoomsInfo(client, function(rooms) {
+                console.log("3");
+                utils.getUserStatus(req.user, client, function(status) {
+                    console.log("4");
+                    utils.showProfile(req, res, room, users, rooms, status, user);
+                });
+            });
+        });
+    });
   });
+
+
 });
 
 app.post('/user/remove/:id', function(req, res){
@@ -49,4 +62,3 @@ app.post('/user/remove/:id', function(req, res){
   userService.remove(req.params.id);
   res.send(user);
 });
-

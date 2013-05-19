@@ -1,7 +1,7 @@
-Balloons.IO
+CodeKata.IO
 ===========
 
-Balloons.IO is a web multi-room chat server and client ready to use.
+CodeKata.IO is a web multi-room chat server and client ready to use.
 It’s build with the help of node.JS, Express, Socket.IO and Redis. 
 
 ### [Follow me on twitter](https://twitter.com/gravityonmars)
@@ -34,11 +34,11 @@ Start Redis
 `./redis-server ./redis.conf`
 
 
-### Install Balloons.IO
+### Install CodeKata.IO
 
 If you have these 2 tools installed, go to terminal and type:
 
-    git clone https://github.com/gravityonmars/Balloons.IO.git
+    git clone https://github.com/jasongoodwin/Balloons.IO
     cd Balloons.IO
     npm install
     mv config.sample.json config.json
