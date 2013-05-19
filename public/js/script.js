@@ -76,7 +76,7 @@ $(function() {
     questionNumber = questionNumber + 1;
     socket.emit('problem request' + questionNumber); //get problem one two or three for demo
     if (!window.winner) {
-      $('.submit-modal').modal('show').find('.modal-body').html('<h1>LOSER!!!</h1>');
+      $('#myModal').modal('show').find('.modal-body').html('<h1 style="text-align: center; color:#333"><span style="color:red;">Sorry you lost!</span><br>Click close to move on to the next round!</h1>');
     }
 
   });
@@ -84,12 +84,13 @@ $(function() {
   socket.on('submit response', function(res){
 
 
+    console.log(res);
 
     if (res.response[questionNumber - 1].isPassed === true){
 
       window.winner = true;
 
-      $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;\"><h1><span style=\"color:green;\">Correct!</span> Congratulations.<br>Close this window to get the next question.</h1></div>" + "</div>");
+      $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;color:#333\"><h1><span style=\"color:green;\">Correct!</span><br>Close this window to get the next question.</h1></div>" + "</div>");
 
 
 
@@ -98,7 +99,7 @@ $(function() {
       var delay = 10000;
 
       $('.submit-modal').find('.btn').hide();
-      $('.submit-modal .modal-body').html("<div style=\"text-align:center;\"><h1>Incorrect Answer, 10 second penalty.</h1>" + '<div class="timer"><input data-fgcolor="#ff0000" data-thickness=".4" data-readonly="true" data-width="80" data-height="80" value="22" class="timeDelay" readonly="readonly"></div>' + "</div>");
+      $('.submit-modal .modal-body').html("<div style=\"text-align:center;color:#333\"><h1>Incorrect Answer - 10 second penalty.</h1>" + '<div class="timer"><input data-fgcolor="#ff0000" data-thickness=".4" data-readonly="true" data-width="80" data-height="80" value="22" class="timeDelay" readonly="readonly"></div>' + "</div>");
 
       $('.timeDelay').knob();
 
@@ -112,8 +113,13 @@ $(function() {
         });
 
       setTimeout(function(){
-        $('.timer').slideUp();
-        $('.submit-modal').find('.btn').fadeIn();
+        $('.timer').slideUp(function(){
+          $('.submit-modal').find('.btn').fadeIn();
+          $('#myModal').modal('hide');
+          $(this).show();
+        });
+
+
       }, 9500);
 
 
