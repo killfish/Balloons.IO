@@ -8,6 +8,7 @@ var app = module.parent.exports.app
 /**
  *
  Test
+
  {
    "id": "string-reverse",
    "language": "js",
@@ -58,7 +59,7 @@ var app = module.parent.exports.app
      },
      {
        "description": "make a greeting for John: Greetings John",
-       "test": "reverseString('John');",
+       "test": "makeGreeting('John');",
        "expectedResult": "Greetings John"
      }
    ]

@@ -181,16 +181,20 @@ io.sockets.on('connection', function (socket) {
         return eval.isPassed == false
       })
 
-      socket.emit('submit response', {
-        response: kataEvaluation
-      });
+
 
       if(failure){
+        kataEvaluation.success = false
         console.log("failure found")
       }else{
+        kataEvaluation.success = true
         console.log("no failure found - emitting an erotic massage")
         io.sockets.emit('question answered', true)
       }
+
+      socket.emit('submit response', {
+        response: kataEvaluation
+      });
     });
   });
 //
