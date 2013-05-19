@@ -936,8 +936,11 @@ p span.date {
   padding: 10px;
 }
 .fancy-theme .code .problem{
-  background-color: #f4e489;
-  padding: 10px;
+  
+    background: url(../img/question-icon.png) left center no-repeat #f4e489;
+    min-height: 50px;
+
+  padding: 10px 0 10px 65px;
 }
 .fancy-theme .code-content {
   top: 50px;
