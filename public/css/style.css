@@ -1263,10 +1263,28 @@ input::-moz-input-placeholder {
     width:30px;
     height:31px;
     display: inline-block;
-    margin:0 2px;
+    margin:0;
     background-position: center;
     background-repeat: no-repeat;
-    transform: scale(0.5);
+    -moz-transform: scale(0.75) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -webkit-transform: scale(0.75) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -o-transform: scale(0.75) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -ms-transform: scale(0.75) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    transform: scale(0.75) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -webkit-transition: all 250ms ;
+    -moz-transition: all 250ms ;
+    -ms-transition: all 250ms ;
+    -o-transition: all 250ms ;
+    transition: all 250ms ;
+    cursor:pointer;
+}
+
+.badge:hover {
+    -moz-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -webkit-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -o-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -ms-transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 }
 
 .badge.badge1 {
