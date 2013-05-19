@@ -20,3 +20,8 @@ exports.save = function(kata){
   console.log(kataObj);
   kataObj.save();
 };
+
+exports.evaluateSubmission = function(data){
+	var solution = data.solution;
+	var problem_id = data.problem_id;
+};
