@@ -1,26 +1,28 @@
 script#chat_box(type='text/html')
-  .chat-box(data-user='{{ nickname }}', data-provider='{{ provider }}', data-type='{{ type }}')
-    div(class="avatar avatar-{{ provider }}")
-      img(src='http://avatars.io/{{ provider }}/{{ nickname }}')
-      a(href="https://{{ provider }}.com/{{ nickname }}")(target='_blank')
-    h5
-      | {{ nickname }}
-    {{> chat_box_text }}
+	.chat-box(data-user='{{ nickname }}', data-provider='{{ provider }}', data-type='{{ type }}')
+		div(class="avatar avatar-{{ provider }}")
+			img(src='http://avatars.io/{{ provider }}/{{ nickname }}')
+			a(href="https://{{ provider }}.com/{{ nickname }}")(target='_blank')
+		h5
+			| {{ nickname }}
+		{{> chat_box_text }}
 
 script#chat_box_text(type='text/html')
-  p
-    span.date {{ time.hours }}:{{ time.minutes }} {{ time.meridiem }}
-    | {{ msg }}
+	p
+		span.date {{ time.hours }}:{{ time.minutes }} {{ time.meridiem }}
+		| {{ msg }}
 
 script#chat_notice(type='text/html')
-  .notice(data-user="{{ user }}")
-    span.date {{ time.hours }}:{{ time.minutes }} {{ time.meridiem }}
-    |  {{ noticeMsg }}
+	.notice(data-user="{{ user }}")
+		span.date {{ time.hours }}:{{ time.minutes }} {{ time.meridiem }}
+		|  {{ noticeMsg }}
 
 script#people_box(type='text/html')
-  a(class='{{ status }}', href='#', data-username='{{ nickname }}', data-provider='{{ provider }}')
-    b
-    | {{ nickname }}
+	a(class='{{ status }}', href='#', data-username='{{ nickname }}', data-provider='{{ provider }}')
+		b
+		| {{ nickname }}
+		div.progress
+			input(class="knob", data-fgColor="#e6cf4a", data-thickness=".4", data-readOnly="true", data-width="80",data-height="80", value="22")
 
 script#title_template(type='text/html')
-  | {{#count}} ({{ count }}) {{/count}} {{ roomName }} - code.kata.io
+	| {{#count}} ({{ count }}) {{/count}} {{ roomName }} - code.kata.io
