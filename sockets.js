@@ -126,16 +126,16 @@ io.sockets.on('connection', function (socket) {
       });
     });
   });
-
+  
   function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
+  
   socket.on('submit request', function(data) {
-    //var submit_response = kataService.evaluateCode(data);
-    var submit_response = { data: true};
-    socket.emit('submit response', {
-      response: submit_response
+    kataService.evaluate(data, function(kataEvaluation) {
+      socket.emit('submit response', {
+        response: kataEvaluation
+      });
     });
   });
 

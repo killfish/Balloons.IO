@@ -23,7 +23,8 @@ exports.save = function(kata){
 };
 
 exports.evaluate = function (data, cb) {
-//  data.solution
-//  data.problem_id
-  return false;
+	//  data.solution
+	//  data.problem_id
+	console.log(data);
+	cb(false)
 };
