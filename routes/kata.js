@@ -59,8 +59,8 @@ var app = module.parent.exports.app
      },
      {
        "description": "make a greeting for John: Greetings John",
-       "test": "makeGreeting('John');",
-       "expectedResult": "Greetings John"
+       "test": "makeGreeting('Bob');",
+       "expectedResult": "Greetings Bob"
      }
    ]
  }
@@ -76,17 +76,7 @@ var app = module.parent.exports.app
      {
        "description": "did not find the missing letter",
        "test": "findMissingLetter('kittyctseyeforus');",
-       "expectedResult": ""
-     },
-     {                                                                                                                                   F
-       "description": "make a greeting for Alice: Greetings Alice",
-       "test": "makeGreeting('Alice');",
-       "expectedResult": "Greetings Alice"
-     },
-     {
-       "description": "make a greeting for John: Greetings John",
-       "test": "makeGreeting('John');",
-       "expectedResult": "Greetings John"
+       "expectedResult": "a"
      }
    ]
  }
