@@ -55,9 +55,15 @@ $(function() {
 
   // problem sockets
   socket.on('problem response', function(res){
-    window.problem = res.response;
-    $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
-    editor.setValue(res.response.templateCode);
+
+
+    try {
+      window.problem = res.response;
+      $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
+      editor.setValue(res.response.templateCode);
+    } catch (e){
+
+    }
   });
 
   // submit sockets
@@ -422,10 +428,10 @@ $(function() {
       console.log('####res', res);
     });
 
-    setTimeout(function(){
+/*    setTimeout(function(){
         console.log('sending request');
         socket.emit('problem request');
-    }, 1000);
+    }, 1000);*/
 
 
 
@@ -455,24 +461,26 @@ $(function() {
       link: 'http://www.craigishere.me'
     });
   });
-
   // knob shit
-  $(".knob").knob({
-    draw : function(){
-      $('.knob').css('visibility', 'visible');
-    }
-  });
-
   setTimeout(function(){
-    $({value: 0}).animate({value: 75}, {
-      duration: 1000,
-      easing:'swing',
-      step: function()
-      {
-        $('.people a:first .knob').val(Math.ceil(this.value)).trigger('change');
+    $(".knob").knob({
+      draw : function(){
+        $('.knob').css('visibility', 'visible');
       }
-    })
-  }, 2000);
+    });
+
+    setTimeout(function(){
+      $({value: 0}).animate({value: 75}, {
+        duration: 1000,
+        easing:'swing',
+        step: function()
+        {
+          $('.people a:first .knob').val(Math.ceil(this.value)).trigger('change');
+        }
+      })
+    }, 2000);
+  }, 1000);
+
 
 
 
