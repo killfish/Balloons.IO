@@ -173,12 +173,41 @@ io.sockets.on('connection', function (socket) {
   }
   
   socket.on('submit request', function(data) {
+    console.log("received request for submission: " + JSON.stringify(data))
     kataService.evaluate(data, function(kataEvaluation) {
+      console.log("Kata evaluation: " + JSON.stringify(kataEvaluation))
       socket.emit('submit response', {
         response: kataEvaluation
       });
     });
   });
+//
+//  socket.on('submit request1', function(data) {
+//    console.log("received request1")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
+//
+//  socket.on('submit request2', function(data) {
+//    console.log("received request2")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
+//
+//  socket.on('submit request3', function(data) {
+//    console.log("received request3")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
 
   socket.on('history request', function() {
     var history = [];
