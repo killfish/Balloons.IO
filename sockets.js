@@ -150,7 +150,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('problem request2', function() {
     console.log("problem2 requested - printbob")
 
-    kataService.getById("greetings-alice", function(err, kata){
+    kataService.getById("missing-cats-eye", function(err, kata){
       if(err) console.log("error")
       socket.emit('problem response', {
         response: kata
@@ -161,7 +161,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('problem request3', function() {
     console.log("problem3 requested")
 
-    kataService.getById("missing-cats-eye", function(err, kata){
+    kataService.getById("greetings-alice", function(err, kata){
       if(err) console.log("error")
       socket.emit('problem response', {
         response: kata
