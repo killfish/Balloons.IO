@@ -6,7 +6,7 @@
 
 var mongoose = require('mongoose')
    , Kata = mongoose.model('KataSchema')
-   , evaluator = require('./lib/core_evaluator')
+   , evaluator = require('../lib/core_evaluator/')
 
 exports.getById = function(id, fun){
   return Kata.findOne({"id": id}, fun);
