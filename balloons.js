@@ -94,6 +94,7 @@ require('./routes/eval.js');
 require('./routes/auth.js');
 require('./routes/kata.js');
 require('./routes/rooms.js');
+require('./routes/user.js');
 
 /*
  * Web server
