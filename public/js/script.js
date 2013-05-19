@@ -514,8 +514,8 @@ $(function() {
     });
   };
 
-
-  FB.init({appId: '572742529414533', xfbml: true, cookie: true});
+  var fbid = (window.location.href.indexOf('198.199.81.151') > -1) ? '135123666677844' :  '572742529414533';
+  FB.init({appId: fbid, xfbml: true, cookie: true});
 
 
   $('.fbfriends').click(function(e){
