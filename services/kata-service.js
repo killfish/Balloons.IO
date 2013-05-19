@@ -5,7 +5,8 @@
  */
 
 var mongoose = require('mongoose')
-    , Kata = mongoose.model('KataSchema');
+   , Kata = mongoose.model('KataSchema')
+   , evaluator = require('./lib/core_evaluator')
 
 exports.getById = function(id, fun){
   return Kata.findOne({"id": id}, fun);
@@ -21,8 +22,8 @@ exports.save = function(kata){
   kataObj.save();
 };
 
-exports.evaluate = function (data) {
+exports.evaluate = function (data, cb) {
 //  data.solution
 //  data.problem_id
-  return false
+  return false;
 };
