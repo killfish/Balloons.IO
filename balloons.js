@@ -53,7 +53,6 @@ var app = exports.app = express();
 
 app.configure(function() {
 
-
   app.set('port', process.env.PORT || config.app.port || 6789);
   app.set('view engine', 'jade'); 
   app.set('views', __dirname + '/views/themes/' + config.theme.name);
@@ -90,6 +89,8 @@ fs.readdirSync(models_path).forEach(function (file) {
  * Routes
  */
 
+
+require('./routes/eval.js');
 require('./routes/auth.js');
 require('./routes/kata.js');
 require('./routes/rooms.js');
