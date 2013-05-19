@@ -72,6 +72,9 @@ $(function() {
   })
 
   socket.on('submit response', function(res){
+    alert(JSON.stringify(res))
+
+
     $('.submit-modal .modal-body').html("<div>" + res.response.data + "</div>");
   });
 
