@@ -12,7 +12,8 @@ var parent = module.parent.exports
   , sio = require('socket.io')
   , parseCookies = require('connect').utils.parseSignedCookies
   , cookie = require('cookie')
-  , config = require('./config.json')
+  , Config = require('./config')
+  , config = new Config()
   , kataService = require('./services/kata-service.js')
   , fs = require('fs');
 

@@ -8,6 +8,8 @@ block content
 				|code.kata.io
 			include status_dropdown
 			include rooms_dropdown
+
+
 			a.button-circle.invite.fancybox(href='#invite', style="display:none;")
 				strong
 					span
@@ -39,6 +41,7 @@ block content
 						i
 		sidebar
 			include chat_list
+
 			include files_list
 
 		.content(role='main')
@@ -63,9 +66,9 @@ block content
 				.answer
 					div(id='editor')
 
-			.chat-input
+			.answer-input
 				a.btn(href="#myModal",role="button",data-toggle="modal",style='outline:none')
-					.button(margin='13px') Submit
+					.button(margin='13px') Submit your answer!
 
 			.submit-modal
 				#myModal.modal.hide.fade(tabindex='-1',role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')

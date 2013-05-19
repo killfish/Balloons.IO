@@ -15,7 +15,6 @@
       , "passport-facebook": "0.1.x"
       , "mongoose": "latest"
       , "underscore": "latest"
-      , "nodeunit": "latest"
     }
   , "engines": {
     "node": ">= 0.8.0",

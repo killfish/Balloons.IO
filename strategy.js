@@ -5,8 +5,9 @@
 
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
-  , FacebookStrategy = require('passport-facebook').Strategy 
-  , config = require('./config.json');
+  , FacebookStrategy = require('passport-facebook').Strategy
+  , Config = require('./config')
+  , config = new Config();
 
 /*
  * Auth strategy

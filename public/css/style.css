@@ -606,6 +606,17 @@ sidebar div.online .people a:hover {
   color: #fff;
   cursor: text;
 }
+
+
+.people .progress {
+    text-align: center;
+    padding: 20px 0 5px;
+}
+
+.people .knob {
+    visibility: hidden;
+}
+
 /*
 	---- Hide until multichat
 	sidebar div.online .people a:hover{
@@ -772,7 +783,7 @@ p span.date {
   height: 18px;
   margin-bottom: -4px;
 }
-.content .chat-input {
+.content .chat-input, .content .answer-input {
   overflow: hidden;
   z-index: 500;
   bottom: 0;
@@ -785,6 +796,21 @@ p span.date {
   background-image: -moz-linear-gradient(#fdfdfd 4.4%, #dfe2e9);
   background-image: -o-linear-gradient(#fdfdfd 4.4%, #dfe2e9);
 }
+
+.answer-input {
+    padding:13px 15px;
+}
+
+.problem .title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.problem .desectiption {
+    font-size: 14px;
+}
+
+
 .content .chat-input input.text {
   height: auto;
   max-height: 1.2em;
@@ -921,9 +947,14 @@ p span.date {
   padding: 10px;
 }
 .fancy-theme .code .problem{
-  background-color: #f4e489;
-  padding: 10px;
+
+    background: url(../img/question-icon.png) left center no-repeat #f4e489;
+    min-height: 50px;
+
+  padding: 10px 0 10px 65px;
 }
+
+
 .fancy-theme .code-content {
   top: 50px;
   width: 75%;
@@ -965,7 +996,7 @@ p span.date {
 .fancy-theme .chat-input {
 
  /* background: url("../img/bg-sidebar.png");*/
-  border-top: 1px solid #000;
+  /*border-top: 1px solid #000;*/
 }
 .fancy-theme .chat-input .button{
   margin: 13px;
@@ -1203,6 +1234,12 @@ span.dropdown-users-online {
   font-weight: normal;
   margin-right: 6px;
 }
+
+.fbfriends {
+    margin: 10px 6%;
+    width: 70%;
+}
+
 .text-grey {
   border: 1px solid rgba(0,0,0,0.3);
   background: #f9f9f9;
