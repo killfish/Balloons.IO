@@ -55,7 +55,8 @@ $(function() {
 
   // problem sockets
   socket.on('problem response', function(res){
-    $('.code .question .problem').html("<div class='title'>" + res.response.title + "</div><div class='description'>" + res.response.description + "</div>");
+    $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
+    editor.setValue(res.response.templateCode);
   });
 
   // submit sockets
@@ -414,7 +415,7 @@ $(function() {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/clouds");
     editor.getSession().setMode("ace/mode/javascript");
-
+    
     // problem sockets
     socket.on('problem response', function(res){
       console.log('####res', res);
