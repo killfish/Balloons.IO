@@ -72,7 +72,7 @@ $(function() {
   });
 
   socket.on('question answered', function(){
-
+    alert('fff')
     questionNumber = questionNumber + 1;
     socket.emit('problem request' + questionNumber); //get problem one two or three for demo
     if (!window.winner) {
@@ -86,7 +86,20 @@ $(function() {
 
     console.log(res);
 
-    if (res.response[questionNumber - 1].isPassed === true){
+    var messages = [],
+        errors = false;
+
+    $.each(res.response, function(i, val){
+        if (val.isPassed !== true){
+          errors = true;
+          messages.push(val.failedTestCase);
+        }
+    });
+
+
+
+
+    if (errors === false){
 
       window.winner = true;
 
@@ -99,7 +112,7 @@ $(function() {
       var delay = 10000;
 
       $('.submit-modal').find('.btn').hide();
-      $('.submit-modal .modal-body').html("<div style=\"text-align:center;color:#333\"><h1>Incorrect Answer - 10 second penalty.</h1>" + '<div class="timer"><input data-fgcolor="#ff0000" data-thickness=".4" data-readonly="true" data-width="80" data-height="80" value="22" class="timeDelay" readonly="readonly"></div>' + "</div>");
+      $('.submit-modal .modal-body').html("<div style=\"text-align:center;color:#333\"><h1>Incorrect Answer - 10 second penalty.</h1><p>"+ messages.join('<br>') +"</p>" + '<div class="timer"><input data-fgcolor="#ff0000" data-thickness=".4" data-readonly="true" data-width="80" data-height="80" value="22" class="timeDelay" readonly="readonly"></div>' + "</div>");
 
       $('.timeDelay').knob();
 
