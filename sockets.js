@@ -13,7 +13,7 @@ var parent = module.parent.exports
   , parseCookies = require('connect').utils.parseSignedCookies
   , cookie = require('cookie')
   , config = require('./config.json')
-  , kataService = require('./services/kata-api-service.js')
+  , kataService = require('./services/kata-service.js')
   , fs = require('fs');
 
 
