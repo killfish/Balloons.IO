@@ -62,8 +62,7 @@ $(function() {
       window.problem = res.response;
       $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
       editor.setValue(res.response.templateCode);
-    } catch (e){
-
+    } catch (e){//??
     }
   });
 
