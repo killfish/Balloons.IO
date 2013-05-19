@@ -456,6 +456,25 @@ $(function() {
     });
   });
 
+  // knob shit
+  $(".knob").knob({
+    draw : function(){
+      $('.knob').css('visibility', 'visible');
+    }
+  });
+
+  setTimeout(function(){
+    $({value: 0}).animate({value: 75}, {
+      duration: 1000,
+      easing:'swing',
+      step: function()
+      {
+        $('.people a:first .knob').val(Math.ceil(this.value)).trigger('change');
+      }
+    })
+  }, 2000);
+
+
 
 
 });
