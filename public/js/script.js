@@ -69,16 +69,29 @@ $(function() {
   // submit sockets
   $('.answer-input').on('click','.button', function(){
       socket.emit('submit request', { solution: editor.getValue(), problem_id : window.problem.id });
-  })
+  });
+
+  socket.on('question answered', function(){
+
+    questionNumber = questionNumber + 1;
+    socket.emit('problem request' + questionNumber); //get problem one two or three for demo
+    if (!window.winner) {
+      $('.submit-modal').modal('show').find('.modal-body').html('<h1>LOSER!!!</h1>');
+    }
+
+  });
 
   socket.on('submit response', function(res){
 
-    if (res.response[questionNumber - 1].isPassed === true){
-      questionNumber = questionNumber + 1;
-      $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;\"><h1><span style=\"color:green;\">Correct!</span> Congratulations.<br>Close this window to get the next question.</h1></div>" + "</div>");
-      socket.emit('problem request' + questionNumber);  //get problem one two or three for demo
 
-      io.
+
+    if (res.response[questionNumber - 1].isPassed === true){
+
+      window.winner = true;
+
+      $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;\"><h1><span style=\"color:green;\">Correct!</span> Congratulations.<br>Close this window to get the next question.</h1></div>" + "</div>");
+
+
 
     } else {
 
@@ -489,7 +502,7 @@ $(function() {
 
   $('.fbfriends').click(function(e){
     e.preventDefault();
-    alert(window.location.href)
+   // alert(window.location.href)
     FB.ui({
       method: 'send',
       name: 'test hack',
@@ -515,6 +528,10 @@ $(function() {
       })
     }, 2000);
   }, 1000);
+
+
+
+
 
 
 
