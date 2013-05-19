@@ -46,8 +46,8 @@ var testData1 = {
 
 app.get('/evaltest', function(req, res){
 
-  jsEval.evaluate(testData1, testKata, function(x, y){
-    console.log(x + y)
+  jsEval.evaluate(testData1, testKata, function(x){
+    console.log("callback: " + JSON.stringify(x))
   });
 //
 //  kataService.getAllKatas(function(err, kata){
