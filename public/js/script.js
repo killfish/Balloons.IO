@@ -1,3 +1,5 @@
+var questionNumber=1
+
 $(function() {
   var USERS = window.USERS = {}
     , windowStatus
@@ -49,14 +51,13 @@ $(function() {
       socket.emit('history request');
     }
     if($('.code .question .problem').children().length == 0) {
-      socket.emit('problem request');
+      socket.emit('problem request' + questionNumber);  //get problem one two or three for demo
+
     }
   });
 
   // problem sockets
   socket.on('problem response', function(res){
-
-
     try {
       window.problem = res.response;
       $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");

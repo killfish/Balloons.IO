@@ -1,4 +1,3 @@
-
  /**
  * Module dependencies.
  * Isolate dependencies on mongo to the service layer.
@@ -25,7 +24,8 @@ exports.save = function(kata){
 exports.evaluate = function (data, cb) {
 	//  data.solution
 	//  data.problem_id
-	console.log(data);
+  evaluator.evaluate(data, cb)
 
-	cb(false)
+	//cb(false)
+
 };

@@ -1,4 +1,3 @@
-
 /*
  * Module dependencies
  */
@@ -114,10 +113,15 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
+
+  /**
+   * Original random method
+   */
   socket.on('problem request', function() {
+    console.log("problem1 requested")
     kataService.getAllKatas(function(err, kata){
       if(err) res.send(err)
-        console.log("kata list size is: " + kata.length)
+      console.log("kata list size is: " + kata.length)
 
       var randPic = getRandomInt(0, kata.length-1)
       console.log(randPic)
@@ -127,18 +131,83 @@ io.sockets.on('connection', function (socket) {
       });
     });
   });
+
+  /**
+   * Hardcoded methods for demo
+   */
+
+  socket.on('problem request1', function() {
+    console.log("problem1 requested- reverse string")
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
+      });
+    });
+  });
+
+  socket.on('problem request2', function() {
+    console.log("problem2 requested - printbob")
+
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
+      });
+    });
+  });
+
+  socket.on('problem request3', function() {
+    console.log("problem3 requested")
+
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
+      });
+    });
+  });
   
   function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
   socket.on('submit request', function(data) {
+    console.log("received request for submission: " + JSON.stringify(data))
     kataService.evaluate(data, function(kataEvaluation) {
+      console.log("Kata evaluation: " + JSON.stringify(kataEvaluation))
       socket.emit('submit response', {
         response: kataEvaluation
       });
     });
   });
+//
+//  socket.on('submit request1', function(data) {
+//    console.log("received request1")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
+//
+//  socket.on('submit request2', function(data) {
+//    console.log("received request2")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
+//
+//  socket.on('submit request3', function(data) {
+//    console.log("received request3")
+//    kataService.evaluate(data, function(kataEvaluation) {
+//      socket.emit('submit response', {
+//        response: kataEvaluation
+//      });
+//    });
+//  });
 
   socket.on('history request', function() {
     var history = [];
