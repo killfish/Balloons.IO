@@ -73,12 +73,15 @@ $(function() {
   })
 
   socket.on('submit response', function(res){
-    //$('.submit-modal .modal-body').html("<div>" + res.response.data + "</div>");
 
-    if (true){
+    if (res.response[questionNumber - 1].isPassed === true){
+      questionNumber = questionNumber + 1;
       $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;\"><h1><span style=\"color:green;\">Correct!</span> Congratulations.<br>Close this window to get the next question.</h1></div>" + "</div>");
-    } else {
+      socket.emit('problem request' + questionNumber);  //get problem one two or three for demo
 
+      io.
+
+    } else {
 
       var delay = 10000;
 
@@ -99,10 +102,11 @@ $(function() {
       setTimeout(function(){
         $('.timer').slideUp();
         $('.submit-modal').find('.btn').fadeIn();
-      }, 10100);
+      }, 9500);
 
 
     }
+
 
 
   });
