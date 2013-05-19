@@ -58,7 +58,7 @@ var app = module.parent.exports.app
        "expectedResult": "Greetings Alice"
      },
      {
-       "description": "make a greeting for John: Greetings John",
+       "description": "make a greeting for Bob: Greetings Bob",
        "test": "makeGreeting('Bob');",
        "expectedResult": "Greetings Bob"
      }
@@ -70,7 +70,7 @@ var app = module.parent.exports.app
    "language": "js",
    "level": "jr",
    "challengeTitle": "The missing cat's eye",
-   "challengeCopy": "The function will recieve the string 'kittycatseye', but with one character omitted. Return the missing character",
+   "challengeCopy": "The function will recieve the string 'kittycatseyeforus', but with one character omitted. Return the missing character",
    "templateCode": "function findMissingLetter(word){return 'Greetings ' + name};",
    "testCases": [
      {
