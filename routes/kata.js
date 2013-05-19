@@ -65,6 +65,32 @@ var app = module.parent.exports.app
    ]
  }
 
+ {
+   "id": "missing-cat's-eye",
+   "language": "js",
+   "level": "jr",
+   "challengeTitle": "The missing cat's eye",
+   "challengeCopy": "The function will recieve the string 'kittycatseye', but with one character omitted. Return the missing character",
+   "templateCode": "function findMissingLetter(word){return 'Greetings ' + name};",
+   "testCases": [
+     {
+       "description": "did not find the missing letter",
+       "test": "findMissingLetter('kittyctseyeforus');",
+       "expectedResult": ""
+     },
+     {                                                                                                                                   F
+       "description": "make a greeting for Alice: Greetings Alice",
+       "test": "makeGreeting('Alice');",
+       "expectedResult": "Greetings Alice"
+     },
+     {
+       "description": "make a greeting for John: Greetings John",
+       "test": "makeGreeting('John');",
+       "expectedResult": "Greetings John"
+     }
+   ]
+ }
+
 */
 
 app.post('/kata', function(req, res) {
