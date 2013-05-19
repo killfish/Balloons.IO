@@ -22,7 +22,18 @@ script#people_box(type='text/html')
 		b
 		| {{ nickname }}
 		div.progress
-			input(class="knob", data-fgColor="#e6cf4a", data-thickness=".4", data-readOnly="true", data-width="80",data-height="80", value="22")
+			input(class="knob", data-fgColor="#e6cf4a", data-thickness=".4", data-readOnly="true", data-width="80",data-height="80", value="0")
+		- if (true) {
+					.badges
+						span.badge.badge1
+						span.badge.badge2
+						span.badge.badge3
+						span.badge.badge4
+				-} else {
+					.badges
+						span.badge.badge1
+						span.badge.badge4
+				-}
 
 script#title_template(type='text/html')
 	| {{#count}} ({{ count }}) {{/count}} {{ roomName }} - code.kata.io

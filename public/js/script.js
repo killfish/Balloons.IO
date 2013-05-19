@@ -22,18 +22,18 @@ $(function() {
     $(this).toggleClass("active");
     $(this).next(".dropdown-options").toggle();
   });
-  
+
   $(".create-room").click(function() {
     $(this).hide();
     $(this).next(".text").fadeIn();
   });
-  
+
   $(".lock").click(function() {
     $(this).toggleClass('active');
   });
-  
+
   $(".fancybox").fancybox({'margin': 0, 'padding': 0});
-  
+
   $(".invite-people").click(function(){
     $(this).hide().after('<p class="inviting-people">Inviting peple, please wait.</p>').delay(2000).hide().after('something');
   });
@@ -52,6 +52,7 @@ $(function() {
     }
     if($('.code .question .problem').children().length == 0) {
       socket.emit('problem request' + questionNumber);  //get problem one two or three for demo
+
     }
   });
 
@@ -67,14 +68,59 @@ $(function() {
 
   // submit sockets
   $('.answer-input').on('click','.button', function(){
-    socket.emit('submit request', { solution: editor.getValue(), problem_id : window.problem.id });
-  })
+      socket.emit('submit request', { solution: editor.getValue(), problem_id : window.problem.id });
+  });
+
+  socket.on('question answered', function(){
+
+    questionNumber = questionNumber + 1;
+    socket.emit('problem request' + questionNumber); //get problem one two or three for demo
+    if (!window.winner) {
+      $('.submit-modal').modal('show').find('.modal-body').html('<h1>LOSER!!!</h1>');
+    }
+
+  });
 
   socket.on('submit response', function(res){
-    alert(JSON.stringify(res))
 
 
-    $('.submit-modal .modal-body').html("<div>" + res.response.data + "</div>");
+
+    if (res.response[questionNumber - 1].isPassed === true){
+
+      window.winner = true;
+
+      $('.submit-modal .modal-body').html("<div>" + "<div style=\"text-align:center;\"><h1><span style=\"color:green;\">Correct!</span> Congratulations.<br>Close this window to get the next question.</h1></div>" + "</div>");
+
+
+
+    } else {
+
+      var delay = 10000;
+
+      $('.submit-modal').find('.btn').hide();
+      $('.submit-modal .modal-body').html("<div style=\"text-align:center;\"><h1>Incorrect Answer, 10 second penalty.</h1>" + '<div class="timer"><input data-fgcolor="#ff0000" data-thickness=".4" data-readonly="true" data-width="80" data-height="80" value="22" class="timeDelay" readonly="readonly"></div>' + "</div>");
+
+      $('.timeDelay').knob();
+
+      $({value: 0}).animate({value: 100}, {
+        duration: 10000,
+        easing:'swing',
+        step: function()
+        {
+          $('.timeDelay').val(Math.ceil(this.value)).trigger('change');
+        }
+        });
+
+      setTimeout(function(){
+        $('.timer').slideUp();
+        $('.submit-modal').find('.btn').fadeIn();
+      }, 9500);
+
+
+    }
+
+
+
   });
 
   socket.on('history response', function(data) {
@@ -129,9 +175,9 @@ $(function() {
             noticeMsg: message,
             time: timeParser(time)
           };
-      
+
       var $lastChatInput = $('.chat .current').children().last();
-      
+
       if($lastChatInput.hasClass('notice') && $lastChatInput.data('user') === data.nickname) {
         $lastChatInput.replaceWith(ich.chat_notice(noticeBoxData));
       } else {
@@ -177,7 +223,7 @@ $(function() {
         };
 
       var $lastChatInput = $('.chat .current').children().last();
-      
+
       if($lastChatInput.hasClass('notice') && $lastChatInput.data('user') === data.username) {
         $lastChatInput.replaceWith(ich.chat_notice(noticeBoxData));
       } else {
@@ -201,7 +247,7 @@ $(function() {
     }
 
     $('.chat').scrollTop($('.chat').prop('scrollHeight'));
-    
+
     //update title if window is hidden
     if(windowStatus == "hidden") {
       afkDeliveredMessages +=1;
@@ -213,7 +259,7 @@ $(function() {
   socket.on('user leave', function(data) {
     var nickname = $('#username').text()
       , message = "$username has left the room.";
-    
+
     for (var userKey in USERS) {
       if(userKey === data.provider + ":" + data.nickname && data.nickname != nickname) {
         //Mark user as leaving
@@ -239,7 +285,7 @@ $(function() {
               };
 
             var $lastChatInput = $('.chat .current').children().last();
-            
+
             if($lastChatInput.hasClass('notice') && $lastChatInput.data('user') === data.nickname) {
               $lastChatInput.replaceWith(ich.chat_notice(noticeBoxData));
             } else {
@@ -360,15 +406,15 @@ $(function() {
         webkitHidden: "webkitvisibilitychange",
         msHidden: "msvisibilitychange",
         oHidden: "ovisibilitychange" /* not currently supported */
-    };             
-  
+    };
+
   for (var hidden in vis) {
     if (vis.hasOwnProperty(hidden) && hidden in document) {
         change = vis[hidden];
         break;
     }
   }
-  
+
   if (change) {
     document.addEventListener(change, onchange);
   } else if (/*@cc_on!@*/false) { // IE 9 and lower
@@ -456,7 +502,7 @@ $(function() {
 
   $('.fbfriends').click(function(e){
     e.preventDefault();
-    alert(window.location.href)
+   // alert(window.location.href)
     FB.ui({
       method: 'send',
       name: 'test hack',
@@ -482,6 +528,10 @@ $(function() {
       })
     }, 2000);
   }, 1000);
+
+
+
+
 
 
 
