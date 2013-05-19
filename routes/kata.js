@@ -33,6 +33,37 @@ var app = module.parent.exports.app
      }
    ]
  }
+
+
+
+ Modify the previous program such that only the users Alice and Bob are greeted with their names.
+
+ {
+   "id": "greetings-alice",
+   "language": "js",
+   "level": "jr",
+   "challengeTitle": "Meet Alice and Bob",
+   "challengeCopy": "Modify the function such that only the users Alice and Bob are greeted with their names",
+   "templateCode": "function makeGreeting(name){return 'Greetings ' + name};",
+   "testCases": [
+     {
+       "description": "return null with a name other than Alice or Bob",
+       "test": "makeGreeting('John');",
+       "expectedResult": ""
+     },
+     {
+       "description": "make a greeting for Alice: Greetings Alice",
+       "test": "makeGreeting('Alice');",
+       "expectedResult": "Greetings Alice"
+     },
+     {
+       "description": "make a greeting for John: Greetings John",
+       "test": "reverseString('John');",
+       "expectedResult": "Greetings John"
+     }
+   ]
+ }
+
 */
 
 app.post('/kata', function(req, res) {

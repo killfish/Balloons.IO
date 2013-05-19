@@ -150,7 +150,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('problem request2', function() {
     console.log("problem2 requested - printbob")
 
-    kataService.getById("string-reverse", function(err, kata){
+    kataService.getById("greetings-alice", function(err, kata){
       if(err) console.log("error")
       socket.emit('problem response', {
         response: kata
