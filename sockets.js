@@ -14,7 +14,8 @@ var parent = module.parent.exports
   , Config = require('./config')
   , config = new Config()
   , kataService = require('./services/kata-service.js')
-  , fs = require('fs');
+  , fs = require('fs')
+  , _ = require('underscore');
 
 
 var io = sio.listen(server);
@@ -176,9 +177,20 @@ io.sockets.on('connection', function (socket) {
     console.log("received request for submission: " + JSON.stringify(data))
     kataService.evaluate(data, function(kataEvaluation) {
       console.log("Kata evaluation: " + JSON.stringify(kataEvaluation))
+      var failure = _.find(kataEvaluation, function(eval){
+        return eval.isPassed == false
+      })
+
       socket.emit('submit response', {
         response: kataEvaluation
       });
+
+      if(failure){
+        console.log("failure found")
+      }else{
+        console.log("no failure found - emitting an erotic massage")
+        io.sockets.emit('question answered', true)
+      }
     });
   });
 //
