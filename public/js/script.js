@@ -58,12 +58,11 @@ $(function() {
 
   // problem sockets
   socket.on('problem response', function(res){
-    try {
+      console.log('Problem response', res);
       window.problem = res.response;
       $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
       editor.setValue(res.response.templateCode);
-    } catch (e){//??
-    }
+
   });
 
   // submit sockets
@@ -72,7 +71,7 @@ $(function() {
   });
 
   socket.on('question answered', function(){
-    alert('fff')
+
     questionNumber = questionNumber + 1;
     socket.emit('problem request' + questionNumber); //get problem one two or three for demo
     if (!window.winner) {
