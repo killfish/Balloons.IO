@@ -49,7 +49,7 @@ $(function() {
       socket.emit('history request');
     }
     if($('.code .question .problem').children().length == 0) {
-      //socket.emit('problem request');
+      socket.emit('problem request');
     }
   });
 
