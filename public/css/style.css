@@ -1002,7 +1002,7 @@ p span.date {
   margin: 13px;
 }
 .fancy-theme .chat-input input.text {
-  border-color: #000;
+  border-color: #eee;
 }
 .fancy-theme .chat-input input.text:focus {
   box-shadow: none;
@@ -1258,6 +1258,32 @@ input::-moz-input-placeholder {
   color: #999;
   font-style: italic;
 }
+
+.badge {
+    width:30px;
+    height:31px;
+    display: inline-block;
+    margin:0 2px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(0.5);
+}
+
+.badge.badge1 {
+    background-image: url(../img/badges/1.png);
+}
+.badge.badge2 {
+    background-image: url(../img/badges/2.png);
+}
+.badge.badge3 {
+    background-image: url(../img/badges/3.png);
+}
+.badge.badge4 {
+    background-image: url(../img/badges/4.png);
+}
+
+
+
 .emoticon-angry {
   background-image: url("../img/emoticons/angry.png");
 }

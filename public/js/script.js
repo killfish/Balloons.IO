@@ -67,7 +67,7 @@ $(function() {
   });
 
   // submit sockets
-  $('.chat-input').on('click','.button', function(){
+  $('.answer-input').on('click','.button', function(){
     socket.emit('submit request', { solution: editor.getValue(), problem_id : window.problem.id });
   })
 

@@ -1,12 +1,26 @@
 .online
 	h4.inner-padding ONLINE
 	.people
-		-users_list.forEach(function(user) {
-			a(class=user.status, href='#', data-username=user.username, data-provider=user.provider)
+		-users_list.forEach(function(user, index) {
+			a(class=user.status, href='#', data-username=user.username, data-provider=user.provider, data-index=index)
 				b
 				= user.username
+
 				div.progress
 					input(class="knob", data-fgColor="#e6cf4a", data-thickness=".4", data-readOnly="true", data-width="80",data-height="80", value="22")
+
+				- if (index == 0) {
+					.badges
+						span.badge.badge1
+						span.badge.badge2
+						span.badge.badge3
+						span.badge.badge4
+				-} else {
+					.badges
+						span.badge.badge1
+						span.badge.badge4
+				-}
+
 		-});
 	a.button.fbfriends(href='#invite')
 		| Invite Friends
