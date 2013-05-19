@@ -114,16 +114,26 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('problem request', function() {
-    var problem_response = { title: "Problem 1", description: "Reverse a string!!" };
+    kataService.getAllKatas(function(err, kata){
+      if(err) res.send(err)
+        console.log("kata list size is: " + kata.length)
 
-    socket.emit('problem response', {
-      response: problem_response
+      var randPic = getRandomInt(0, kata.length-1)
+      console.log(randPic)
+
+      socket.emit('problem response', {
+        response: kata[randPic]
+      });
     });
   });
 
-  socket.on('submit request', function(data) {
-    var submit_response = kataService.evaluateCode(data);
+  function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
+  socket.on('submit request', function(data) {
+    //var submit_response = kataService.evaluateCode(data);
+    var submit_response = { data: true};
     socket.emit('submit response', {
       response: submit_response
     });

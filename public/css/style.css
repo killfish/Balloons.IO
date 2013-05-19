@@ -537,9 +537,20 @@ header .button-circle.lock.active span i {
   background-image: -webkit-linear-gradient(#444, #242424);
   background-image: -moz-linear-gradient(#555 5.8%, #242424);
   background-image: -o-linear-gradient(#555 5.8%, #242424);
-  float: left;
+  float: right;
   width: auto;
 }
+
+h1.logo {
+    background: url(../img/logo-sml.png) center left no-repeat;
+    float:left;
+    width:150px;
+    height: 24px;
+    text-indent:-99999px;
+    margin:0;
+}
+
+
 sidebar {
   width: 17%;
   height: auto;
