@@ -9,7 +9,7 @@ var KataSchema = new Schema({
   challengeCopy: String,
   templateCode: String,
   testCases: [
-    {test: String, expectedResult: String}
+    {description: String, test: String, expectedResult: String}
   ],
   comments: [
     { body: String, date: Date }

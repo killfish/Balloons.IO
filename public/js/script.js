@@ -55,12 +55,14 @@ $(function() {
 
   // problem sockets
   socket.on('problem response', function(res){
-    $('.code .question .problem').html("<div class='title'>" + res.response.title + "</div><div class='description'>" + res.response.description + "</div>");
+    window.problem = res.response;
+    $('.code .question .problem').html("<div class='title'>" + res.response.challengeTitle + "</div><div class='description'>" + res.response.challengeCopy + "</div>");
+    editor.setValue(res.response.templateCode);
   });
 
   // submit sockets
   $('.chat-input').on('click','.button', function(){
-    socket.emit('submit request', { data: editor.getValue() });
+    socket.emit('submit request', { solution: editor.getValue(), problem_id : window.problem.id });
   })
 
   socket.on('submit response', function(res){
