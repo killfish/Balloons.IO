@@ -113,16 +113,57 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
+
+  /**
+   * Original random method
+   */
   socket.on('problem request', function() {
+    console.log("problem1 requested")
     kataService.getAllKatas(function(err, kata){
       if(err) res.send(err)
-        console.log("kata list size is: " + kata.length)
+      console.log("kata list size is: " + kata.length)
 
       var randPic = getRandomInt(0, kata.length-1)
       console.log(randPic)
 
       socket.emit('problem response', {
         response: kata[randPic]
+      });
+    });
+  });
+
+  /**
+   * Hardcoded methods for demo
+   */
+
+  socket.on('problem request1', function() {
+    console.log("problem1 requested- reverse string")
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
+      });
+    });
+  });
+
+  socket.on('problem request2', function() {
+    console.log("problem2 requested - printbob")
+
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
+      });
+    });
+  });
+
+  socket.on('problem request3', function() {
+    console.log("problem3 requested")
+
+    kataService.getById("string-reverse", function(err, kata){
+      if(err) console.log("error")
+      socket.emit('problem response', {
+        response: kata
       });
     });
   });
