@@ -49,7 +49,7 @@ $(function() {
       socket.emit('history request');
     }
     if($('.code .question .problem').children().length == 0) {
-      socket.emit('problem request');
+      //socket.emit('problem request');
     }
   });
 
@@ -439,6 +439,20 @@ $(function() {
       doit = setTimeout(resizedw, 100);
     });
   };
+
+
+  FB.init({appId: '572742529414533', xfbml: true, cookie: true});
+
+
+  $('.fbfriends').click(function(e){
+    e.preventDefault();
+    alert(window.location.href)
+    FB.ui({
+      method: 'send',
+      name: 'test hack',
+      link: 'http://www.craigishere.me'
+    });
+  });
 
 
 

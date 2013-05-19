@@ -1,23 +1,27 @@
 {
-    "name": "CodeKata.io"
-  , "description": "Compete against developers online and build a solid reputation."
-  , "version": "0.0.1"
-  , "dependencies": {
-        "express": "3.0.0"
-      , "connect": "2.4.x"
-      , "cookie": "0.0.x"
-      , "jade": "*"
-      , "socket.io": ">=0.9.7"
-      , "redis": "0.7.2"
-      , "connect-redis": "1.4.x"
-      , "passport": "0.1.x"
-      , "passport-twitter": "0.1.x"
-      , "passport-facebook": "0.1.x"
-      , "mongoose": "latest"
-      , "underscore": "latest"
+    "name": "CodeKata.io",
+    "description": "Compete against developers online and build a solid reputation.",
+    "version": "0.0.1-1",
+    "dependencies": {
+        "express": "3.0.0",
+        "connect": "2.4.x",
+        "cookie": "0.0.x",
+        "jade": "*",
+        "socket.io": ">=0.9.7",
+        "redis": "0.7.2",
+        "connect-redis": "1.4.x",
+        "passport": "0.1.x",
+        "passport-twitter": "0.1.x",
+        "passport-facebook": "0.1.x",
+        "mongoose": "latest",
+        "underscore": "latest"
+    },
+    "engines": {
+        "node": ">= 0.8.0",
+        "npm": ">= 1.0"
+    },
+    "subdomain": "codekata",
+    "scripts": {
+        "start": "balloons.js"
     }
-  , "engines": {
-    "node": ">= 0.8.0",
-    "npm": ">= 1.0"
-  }
 }

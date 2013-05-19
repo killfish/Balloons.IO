@@ -6,7 +6,8 @@
 var app = module.parent.exports.app
   , passport = require('passport')
   , client = module.parent.exports.client
-  , config = require('../config')
+  , Config = require('../config')
+  , config = new Config()
   , utils = require('../utils');
 
 /*
